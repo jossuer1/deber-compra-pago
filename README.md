@@ -200,7 +200,11 @@ Los íconos de las pestañas **Compra** y **Pago** son SVG personalizados guarda
 
 ## Capturas de pantalla y video
 
-> Las imágenes están en la carpeta [`docs/`](./docs). Se tomaron en un celular con **Android 14**.
+> Las imágenes están en la carpeta [`docs/`](./docs). Se tomaron en un celular con **Android 13**.
+
+### Pantalla de inicio
+
+![Pantalla de inicio](docs/pantalla-inicio.png)
 
 ### Ícono de la aplicación
 

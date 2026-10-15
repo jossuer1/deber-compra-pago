@@ -1,17 +1,35 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header><ion-toolbar color="primary"><ion-title>Pago</ion-title></ion-toolbar></ion-header>
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-content>
+      <p><b>Producto:</b> {{ compra.producto }}</p>
+      <p><b>Subtotal:</b> {{ subtotal | currency }}</p>
+    </ion-card-content>
+  </ion-card>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-input label="Descuento (%)" labelPlacement="floating" type="number" formControlName="descuento"></ion-input>
+    </ion-item>
+    @if (invalido('descuento')) { <ion-note color="danger">Debe estar entre 0 y 100.</ion-note> }
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-item>
+      <ion-input label="Dinero recibido" labelPlacement="floating" type="number" formControlName="recibido"></ion-input>
+    </ion-item>
+    @if (invalido('recibido')) { <ion-note color="danger">Debe ser mayor o igual a 0.</ion-note> }
+  </form>
+
+  @if (form.valid) {
+  <ion-card>
+    <ion-card-content>
+      <p>Descuento: {{ descuentoMonto | currency }}</p>
+      <h2>Total final: {{ total | currency }}</h2>
+      @if (diferencia >= 0) {
+      <h3 style="color: var(--ion-color-success)">Cambio: {{ diferencia | currency }}</h3>
+      } @else {
+      <h3 style="color: var(--ion-color-danger)">Saldo pendiente: {{ -diferencia | currency }}</h3>
+      }
+    </ion-card-content>
+  </ion-card>
+  }
 </ion-content>

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { CurrencyPipe } from '@angular/common';
 
 export const routes: Routes = [
   {
